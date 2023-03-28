@@ -25,7 +25,7 @@ public class SpiderAI : MonoBehaviour
                 if (attackTrigger == 0)
                 {
                     Spider.GetComponent<Animator>().Play("walk");
-                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(Player.transform.position.x, Player.transform.position.y + 0.3f, Player.transform.position.z), SpiderSpeed);
+                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(Player.transform.position.x, 0.5f, Player.transform.position.z), SpiderSpeed);
                 }
             }
             else
