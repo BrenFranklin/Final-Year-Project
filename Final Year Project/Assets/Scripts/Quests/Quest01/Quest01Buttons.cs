@@ -12,9 +12,11 @@ public class Quest01Buttons : MonoBehaviour
     public GameObject QuestName;
     public GameObject QuestObjective;
     public GameObject QuestObject;
+    public GameObject MiniMap;
     public void AcceptQuest()
     {
         player.SetActive(true);
+        MiniMap.SetActive(true);
         noticeCam.SetActive(false);
         UIQuest.SetActive(false);
         StartCoroutine(SetQuestUI());
@@ -41,6 +43,7 @@ public class Quest01Buttons : MonoBehaviour
     public void RejectQuest()
     {
         player.SetActive(true);
+        MiniMap.SetActive(true);
         noticeCam.SetActive(false);
         UIQuest.SetActive(false);
         Quest01.quest01Accepted = false;

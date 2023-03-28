@@ -8,6 +8,11 @@ public class SwingSword : MonoBehaviour
     public int swordStatus;
     void Update()
     {
+        if(swordStatus == 0)
+        {
+            sword.GetComponent<Animator>().Play("New State");
+        }
+
         if (Input.GetButtonDown("Attack1") && swordStatus == 0)
         {
             StartCoroutine(swingSwordAction());
@@ -23,6 +28,7 @@ public class SwingSword : MonoBehaviour
         swordStatus = 2;
         
         yield return new WaitForSeconds(1.0f);
+
         swordStatus = 0;
     }
 }

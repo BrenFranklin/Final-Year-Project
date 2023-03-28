@@ -13,7 +13,7 @@ public class Quest01 : MonoBehaviour
     public GameObject NoticeCam;
     public GameObject NoticeQuest;
     public static bool quest01Accepted = false;
-
+    public GameObject MiniMap;
 
     void Update()
     {
@@ -32,6 +32,7 @@ public class Quest01 : MonoBehaviour
         {
             if (distance <= 3)
             {
+                MiniMap.SetActive(false);
                 Screen.lockCursor = false;
                 Cursor.visible = true;
                 actionDisplay.SetActive(false);

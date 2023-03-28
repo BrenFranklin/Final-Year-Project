@@ -7,30 +7,44 @@ public class SpiderEnemy : MonoBehaviour
     public int spiderHealth = 15;
     public GameObject spider;
     public int spiderStatus;
+    public int baseEXP = 10;
+    public int CalculatedEXP;
+    public SpiderAI spiderAIScript;
+    public static int GlobalSpider;
+
+    void Start()
+    {
+        spiderAIScript = GetComponent<SpiderAI>();
+    }
+
 
     void DamageSpider(int spiderTakeDamage)
     {
         spiderHealth -= spiderTakeDamage;
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
+        GlobalSpider = spiderStatus;
+
         if (spiderHealth <= 0)
         {
             if(spiderStatus == 0)
             {
-
+                StartCoroutine(DeathSpider());
             }
-            StartCoroutine(DeathSpider());
+            
         }
     }
 
     IEnumerator DeathSpider()
     {
+        spiderAIScript.enabled = false;
         spiderStatus = 6;
+        CalculatedEXP = baseEXP * GlobalLevel.CurrentLevel;
         yield return new WaitForSeconds(0.8f);
-        spider.GetComponent<Animation>().Play("die");
-        GlobalExp.CurrentExp += 50;
+        spider.GetComponent<Animator>().Play("die");
+        GlobalExp.CurrentExp += CalculatedEXP;
     }
 }
