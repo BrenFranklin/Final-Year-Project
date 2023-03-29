@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+using UnityEngine.SceneManagement;
 public class Health : MonoBehaviour
 {
 
@@ -16,5 +16,10 @@ public class Health : MonoBehaviour
         health = hitPoints;
 
         HealthText.GetComponent<TextMeshProUGUI>().text = "HP " + hitPoints;
+
+        if(hitPoints <= 0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
 }

@@ -11,7 +11,7 @@ public class SpiderAI : MonoBehaviour
     public float SpiderSpeed;
     public int attackTrigger;
     public RaycastHit Shot;
-    public int SpiderDamage;
+    public int dealingDamage;
 
     void Update()
     {
@@ -36,7 +36,7 @@ public class SpiderAI : MonoBehaviour
 
             if (attackTrigger == 1)
             {
-                if (SpiderDamage == 0)
+                if (dealingDamage == 0)
                 {
                     SpiderSpeed = 0;
                     Spider.GetComponent<Animator>().Play("attack");
@@ -60,7 +60,7 @@ public class SpiderAI : MonoBehaviour
 
     IEnumerator TakingDamage()
     {
-        SpiderDamage = 2;
+        dealingDamage = 2;
         yield return new WaitForSeconds(0.5f);
         if (SpiderEnemy.GlobalSpider != 6)
         {
@@ -72,7 +72,7 @@ public class SpiderAI : MonoBehaviour
         }
 
         yield return new WaitForSeconds(0.5f);
-        SpiderDamage = 0;
+        dealingDamage = 0;
 
     }
 

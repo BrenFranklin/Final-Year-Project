@@ -8,7 +8,6 @@ public class SpiderEnemy : MonoBehaviour
     public GameObject spider;
     public int spiderStatus;
     public int baseEXP = 10;
-    public int CalculatedEXP;
     public SpiderAI spiderAIScript;
     public static int GlobalSpider;
 
@@ -42,9 +41,8 @@ public class SpiderEnemy : MonoBehaviour
     {
         spiderAIScript.enabled = false;
         spiderStatus = 6;
-        CalculatedEXP = baseEXP * GlobalLevel.CurrentLevel;
         yield return new WaitForSeconds(0.8f);
         spider.GetComponent<Animator>().Play("die");
-        GlobalExp.CurrentExp += CalculatedEXP;
+        GlobalExp.CurrentExp += baseEXP;
     }
 }
